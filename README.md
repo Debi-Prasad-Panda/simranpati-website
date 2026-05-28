@@ -1,36 +1,64 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Art & Words by Simran
+
+A Next.js (App Router) portfolio and writing platform with admin editing, built for SEO and security.
+
+## Stack
+
+- Next.js (App Router) + TypeScript
+- Tailwind CSS (custom palette)
+- Auth.js (Credentials)
+- Vercel Postgres
+- Vercel Blob
+- Resend (contact form)
 
 ## Getting Started
 
-First, run the development server:
+1. Install dependencies:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+   ```bash
+   npm install
+   ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Create a `.env.local` file using the template:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+   ```bash
+   cp .env.example .env.local
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+3. Create database tables using `sql/schema.sql`.
 
-## Learn More
+4. Add an admin user (example):
 
-To learn more about Next.js, take a look at the following resources:
+   ```sql
+   INSERT INTO users (name, email, password_hash, role)
+   VALUES ('Admin', 'admin@example.com', '<bcrypt-hash>', 'admin');
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+5. Start the dev server:
+   ```bash
+   npm run dev
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Scripts
 
-## Deploy on Vercel
+- `npm run dev` - start local dev
+- `npm run build` - production build
+- `npm run start` - run production server
+- `npm run lint` - lint
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## SEO
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Metadata per page
+- JSON-LD for Person and Article
+- `sitemap.xml` and `robots.txt`
+- Canonical URLs via `NEXT_PUBLIC_SITE_URL`
+
+## Admin
+
+- `/admin/login` for sign-in
+- `/admin` for content editing
+
+## Notes
+
+- Replace placeholder images and update `NEXT_PUBLIC_SITE_URL` before launch.
+- The in-memory rate limiter is per-instance. For production, consider Upstash or similar.

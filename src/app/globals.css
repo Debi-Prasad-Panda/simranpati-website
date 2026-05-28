@@ -1,26 +1,78 @@
 @import "tailwindcss";
 
+@theme {
+  --color-paper-foundation: #ffeddb;
+  --color-container-warm: #edcdbb;
+  --color-container-deep: #e3b7a0;
+  --color-accent-doodle: #bf9270;
+  --color-ink-sepia: #2d241e;
+  --color-surface: #fff8f5;
+  --color-surface-variant: #f0dfd6;
+  --color-outline-variant: #cfc5bb;
+  --color-on-surface-variant: #4d463e;
+  --color-primary: #695c4e;
+  --radius-soft: 0.25rem;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  color-scheme: light;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-paper-foundation);
+  color: var(--color-ink-sepia);
+  font-family: var(--font-body);
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+.rich-text {
+  line-height: 1.8;
+  font-size: 1.05rem;
+  color: var(--color-ink-sepia);
+}
+
+.rich-text p {
+  margin: 1rem 0;
+}
+
+.rich-text blockquote {
+  margin: 2rem 0;
+  padding-left: 1.5rem;
+  border-left: 4px solid var(--color-accent-doodle);
+  font-style: italic;
+  color: var(--color-primary);
+}
+
+.rich-text h2,
+.rich-text h3 {
+  font-family: var(--font-display);
+  margin-top: 2rem;
+}
+
+.doodle-bg {
+  position: absolute;
+  z-index: 0;
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.doodle-faint {
+  opacity: 0.2;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(2deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+.doodle-float {
+  animation: float 6s ease-in-out infinite;
 }
