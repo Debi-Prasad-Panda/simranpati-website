@@ -16,23 +16,25 @@ export default async function AboutPage() {
       <section className="mx-auto max-w-[1280px] px-6 py-16 md:px-16 relative">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
           {/* Portrait Canvas */}
-          <div className="col-span-1 md:col-span-5 relative order-2 md:order-1">
-            <div className="bg-container-warm p-4 transform -rotate-2 relative z-10 max-w-sm mx-auto md:mx-0 border border-outline-variant/30">
-              <Image
-                alt="Portrait of Simran"
-                height={520}
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCn9JgpV2tr0aRR6Au7qTTxPJc3yazJZr_Y7d0lAaZSzmvrvvQT86a25iyJfEZLLnGAbNe_dtEtskigQjsPx9ezppg53vgO2CQTpGW9EGPXB-0OQ4swOeVpqpilBiOpCLlDOgzqWO6zKxHzFGT92JjwQLVAJX1LDnKK9IjzA7nWZJEk5q1e3CSYRdYvfTE3GWoMCiEcJfM5-WLocLVXgoXkpMW2vEdfFeDs2tlcuK6kaBo9vgJu5x_KUtEXUGiArqQA3iDTlofOQYc"
-                width={480}
-                className="w-full h-auto object-cover grayscale hover:grayscale-0 transition-all duration-700 ease-in-out rounded-sm"
-              />
-              <div className="mt-4 text-center">
-                <span className="text-[10px] font-bold uppercase tracking-widest text-ink-sepia/70">
-                  Hand-crafted with ink &amp; pixels
-                </span>
+          <div className="col-span-1 md:col-span-5 order-2 md:order-1">
+            <div className="relative max-w-sm mx-auto md:mx-0">
+              <div className="bg-container-warm p-4 transform -rotate-2 relative z-10 border border-outline-variant/30">
+                <Image
+                  alt="Portrait of Simran"
+                  height={520}
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCn9JgpV2tr0aRR6Au7qTTxPJc3yazJZr_Y7d0lAaZSzmvrvvQT86a25iyJfEZLLnGAbNe_dtEtskigQjsPx9ezppg53vgO2CQTpGW9EGPXB-0OQ4swOeVpqpilBiOpCLlDOgzqWO6zKxHzFGT92JjwQLVAJX1LDnKK9IjzA7nWZJEk5q1e3CSYRdYvfTE3GWoMCiEcJfM5-WLocLVXgoXkpMW2vEdfFeDs2tlcuK6kaBo9vgJu5x_KUtEXUGiArqQA3iDTlofOQYc"
+                  width={480}
+                  className="w-full h-auto object-cover grayscale hover:grayscale-0 transition-all duration-700 ease-in-out rounded-sm"
+                />
+                <div className="mt-4 text-center">
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-ink-sepia/70">
+                    Hand-crafted with ink &amp; pixels
+                  </span>
+                </div>
               </div>
+              {/* Decorative outline card behind */}
+              <div className="absolute -top-4 -left-4 w-full h-full border border-outline-variant z-0 transform rotate-1"></div>
             </div>
-            {/* Decorative outline card behind */}
-            <div className="absolute -top-4 -left-4 w-full h-full border border-outline-variant z-0 transform rotate-1"></div>
           </div>
 
           {/* Bio Text */}

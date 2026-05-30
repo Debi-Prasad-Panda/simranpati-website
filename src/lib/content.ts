@@ -24,6 +24,18 @@ export type DesignProject = {
   galleryImages: string[];
 };
 
+export type DbDesignProject = {
+  id: string;
+  title: string;
+  slug: string;
+  overview: string;
+  role: string;
+  tools: string[] | string;
+  year: string;
+  coverImageUrl: string;
+  galleryImages: string[] | string | null;
+};
+
 export type SiteSettings = {
   heroTitle: string;
   heroTagline: string;
@@ -316,7 +328,7 @@ export async function getDesignProjects() {
   }
 
   try {
-    const { rows } = await sql<any>`
+    const { rows } = await sql<DbDesignProject>`
       SELECT id, title, slug, overview, role, tools, year, cover_image_url AS "coverImageUrl", gallery_images AS "galleryImages"
       FROM design_projects
       WHERE is_published = true
@@ -336,7 +348,7 @@ export async function getDesignProjects() {
       return fallbackDesign;
     }
 
-    return rows.map((row: any) => ({
+    return rows.map((row: DbDesignProject) => ({
       ...row,
       tools: Array.isArray(row.tools)
         ? row.tools
@@ -359,7 +371,7 @@ export async function getDesignProjectBySlug(slug: string) {
   }
 
   try {
-    const { rows } = await sql<any>`
+    const { rows } = await sql<DbDesignProject>`
       SELECT id, title, slug, overview, role, tools, year, cover_image_url AS "coverImageUrl", gallery_images AS "galleryImages"
       FROM design_projects
       WHERE slug = ${slug} AND is_published = true

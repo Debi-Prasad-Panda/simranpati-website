@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { z } from "zod";
 import { headers } from "next/headers";
 import { auth } from "@/auth";
@@ -12,6 +13,7 @@ const schema = z.object({
   tools: z.array(z.string()).optional().default([]),
   year: z.string().optional().nullable(),
   coverImageUrl: z.string().url().optional().nullable(),
+  galleryImages: z.array(z.string()).optional().default([]),
   isPublished: z.boolean().optional().default(false),
 });
 
@@ -58,13 +60,13 @@ export async function POST(request: Request) {
     return Response.json({ error: "Invalid payload" }, { status: 400 });
   }
 
-  const { title, overview, role, tools, year, coverImageUrl, isPublished } =
+  const { title, overview, role, tools, year, coverImageUrl, galleryImages, isPublished } =
     parsed.data;
   const slug = slugify(title);
 
   const { rows } = await sql`
     INSERT INTO design_projects (title, slug, overview, role, tools, year, cover_image_url, gallery_images, is_published)
-    VALUES (${title}, ${slug}, ${overview}, ${role ?? ""}, ${tools as any}, ${year ?? ""}, ${coverImageUrl ?? ""}, ${[] as any}, ${isPublished})
+    VALUES (${title}, ${slug}, ${overview}, ${role ?? ""}, ${tools as any}, ${year ?? ""}, ${coverImageUrl ?? ""}, ${galleryImages as any}, ${isPublished})
     RETURNING id
   `;
 

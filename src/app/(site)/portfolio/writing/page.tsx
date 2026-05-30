@@ -73,6 +73,13 @@ export default async function WritingPortfolioPage() {
             </Link>
           );
         })}
+
+        {/* Pull Quote Block to match writing_portfolio/code.html */}
+        <div className="md:col-span-4 p-8 flex items-center justify-center border-l-4 border-accent-doodle bg-surface-variant/20 rounded">
+          <blockquote className="font-display text-xl text-primary italic leading-relaxed">
+            &ldquo;Design is not just what it looks like and feels like. Design is how it reads.&rdquo;
+          </blockquote>
+        </div>
       </div>
     </section>
   );

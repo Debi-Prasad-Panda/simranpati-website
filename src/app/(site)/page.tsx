@@ -21,9 +21,6 @@ export default async function HomePage() {
     getSiteSettings(),
   ]);
 
-  const design = designProjects[0];
-  const writing = writingPosts[0];
-
   // Select 3 items dynamically to showcase recent explorations (2 designs, 1 writing)
   const recentWorks = [
     designProjects[0],

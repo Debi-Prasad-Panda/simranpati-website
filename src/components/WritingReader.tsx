@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 
 type WritingReaderProps = {
   title: string;
@@ -85,7 +86,9 @@ export default function WritingReader({
               </svg>
               {readingTime} min read
             </span>
-            <span className="text-outline-variant">{publishedAt}</span>
+            <span className={isDarkMode ? "text-paper-foundation/60" : "text-on-surface-variant"}>
+              {publishedAt}
+            </span>
           </div>
           <h1
             className={`font-display text-4xl md:text-5xl font-bold leading-tight transition-colors duration-500 ${
@@ -103,10 +106,12 @@ export default function WritingReader({
           </p>
         </header>
 
-        <figure className="my-10 overflow-hidden rounded border border-outline-variant/30 bg-surface-variant/20 p-2">
-          <img
+        <figure className="my-10 overflow-hidden rounded border border-outline-variant/30 bg-surface-variant/20 p-2 relative">
+          <Image
             alt={title}
             src={coverImageUrl}
+            width={800}
+            height={450}
             className="w-full h-auto object-cover rounded opacity-95 transition-opacity hover:opacity-100 duration-500"
           />
         </figure>

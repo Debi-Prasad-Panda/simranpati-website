@@ -47,11 +47,12 @@ export default function DesignGallery({
     };
 
     window.addEventListener("keydown", handleKeyDown);
+    const prevOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
 
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
-      document.body.style.overflow = "";
+      document.body.style.overflow = prevOverflow;
     };
   }, [activeIndex, closeLightbox, showNext, showPrev]);
 

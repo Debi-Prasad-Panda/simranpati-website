@@ -20,11 +20,11 @@ export default async function sitemap() {
       url: `${siteConfig.url}${route}`,
     })),
     ...writing.map((post) => ({
-      url: `${siteConfig.url}/writing/${post.slug}`,
+      url: `${siteConfig.url}/portfolio/writing/${post.slug}`,
       lastModified: post.publishedAt,
     })),
     ...design.map((project) => ({
-      url: `${siteConfig.url}/design/${project.slug}`,
+      url: `${siteConfig.url}/portfolio/design/${project.slug}`,
     })),
   ];
 }

@@ -117,8 +117,15 @@ export default function ContactForm() {
       >
         {state.status === "loading" ? "Sending..." : "Send Inquiry"}
       </button>
-      {state.status !== "idle" && (
-        <p className="text-sm text-on-surface-variant">{state.message}</p>
+      {state.status === "success" && (
+        <div className="p-3 bg-paper-foundation border border-accent-doodle/50 rounded text-xs font-bold text-accent-doodle uppercase tracking-widest mt-4">
+          {state.message}
+        </div>
+      )}
+      {state.status === "error" && (
+        <div className="p-3 bg-[#ffdad6] border border-[#ba1a1a]/30 rounded text-xs font-bold text-[#ba1a1a] uppercase tracking-widest mt-4">
+          {state.message}
+        </div>
       )}
     </form>
   );

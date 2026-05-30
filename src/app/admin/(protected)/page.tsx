@@ -1,6 +1,7 @@
 import SiteSettingsForm from "@/components/admin/SiteSettingsForm";
 import WritingPostForm from "@/components/admin/WritingPostForm";
 import DesignProjectForm from "@/components/admin/DesignProjectForm";
+import AdminInventory from "@/components/admin/AdminInventory";
 import { getSiteSettings } from "@/lib/content";
 
 export default async function AdminDashboardPage() {
@@ -15,6 +16,16 @@ export default async function AdminDashboardPage() {
         </p>
         <div className="mt-6">
           <SiteSettingsForm initial={settings} />
+        </div>
+      </section>
+
+      <section className="rounded-sm border border-outline-variant bg-paper-foundation p-6">
+        <h2 className="font-display text-2xl text-ink-sepia">Content Inventory</h2>
+        <p className="mt-2 text-sm text-on-surface-variant">
+          Manage, view, and delete existing writing posts and design projects.
+        </p>
+        <div className="mt-6">
+          <AdminInventory />
         </div>
       </section>
 

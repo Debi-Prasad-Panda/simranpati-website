@@ -5,6 +5,7 @@ import ImageUploader from "@/components/admin/ImageUploader";
 
 export default function DesignProjectForm() {
   const [coverImageUrl, setCoverImageUrl] = useState("");
+  const [galleryImages, setGalleryImages] = useState<string[]>([]);
   const [message, setMessage] = useState<string | null>(null);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -22,6 +23,7 @@ export default function DesignProjectForm() {
         .filter(Boolean),
       year: formData.get("year"),
       coverImageUrl: coverImageUrl || null,
+      galleryImages: galleryImages,
       isPublished: formData.get("isPublished") === "on",
     };
 
@@ -37,7 +39,16 @@ export default function DesignProjectForm() {
     if (response.ok) {
       event.currentTarget.reset();
       setCoverImageUrl("");
+      setGalleryImages([]);
     }
+  };
+
+  const handleAddGalleryImage = (url: string) => {
+    setGalleryImages((prev) => [...prev, url]);
+  };
+
+  const handleRemoveGalleryImage = (index: number) => {
+    setGalleryImages((prev) => prev.filter((_, i) => i !== index));
   };
 
   return (
@@ -119,6 +130,32 @@ export default function DesignProjectForm() {
           Uploaded URL: {coverImageUrl}
         </p>
       )}
+
+      <ImageUploader label="Add Gallery Image" onUpload={handleAddGalleryImage} />
+      {galleryImages.length > 0 && (
+        <div className="space-y-2">
+          <label className="block text-xs uppercase tracking-[0.2em] text-on-surface-variant">
+            Gallery Images ({galleryImages.length})
+          </label>
+          <div className="grid grid-cols-2 gap-2 border border-outline-variant/30 p-2 rounded">
+            {galleryImages.map((imgUrl, index) => (
+              <div key={index} className="flex items-center justify-between gap-2 p-2 bg-container-warm border border-outline-variant/10 rounded">
+                <span className="text-[10px] text-on-surface-variant truncate max-w-[70%]">
+                  {imgUrl}
+                </span>
+                <button
+                  type="button"
+                  onClick={() => handleRemoveGalleryImage(index)}
+                  className="text-xs text-red-500 font-bold uppercase tracking-wider hover:underline"
+                >
+                  Remove
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
       <label className="flex items-center gap-2 text-xs uppercase tracking-[0.2em] text-on-surface-variant">
         <input name="isPublished" type="checkbox" />
         Publish immediately
