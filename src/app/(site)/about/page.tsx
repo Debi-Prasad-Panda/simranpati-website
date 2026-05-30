@@ -18,13 +18,13 @@ export default async function AboutPage() {
           {/* Portrait Canvas */}
           <div className="col-span-1 md:col-span-5 order-2 md:order-1">
             <div className="relative max-w-sm mx-auto md:mx-0">
-              <div className="bg-container-warm p-4 transform -rotate-2 relative z-10 border border-outline-variant/30">
+              <div className="bg-container-warm p-4 transform -rotate-2 relative z-10 border border-outline-variant/30 group">
                 <Image
                   alt="Portrait of Simran"
                   height={520}
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuCn9JgpV2tr0aRR6Au7qTTxPJc3yazJZr_Y7d0lAaZSzmvrvvQT86a25iyJfEZLLnGAbNe_dtEtskigQjsPx9ezppg53vgO2CQTpGW9EGPXB-0OQ4swOeVpqpilBiOpCLlDOgzqWO6zKxHzFGT92JjwQLVAJX1LDnKK9IjzA7nWZJEk5q1e3CSYRdYvfTE3GWoMCiEcJfM5-WLocLVXgoXkpMW2vEdfFeDs2tlcuK6kaBo9vgJu5x_KUtEXUGiArqQA3iDTlofOQYc"
                   width={480}
-                  className="w-full h-auto object-cover grayscale hover:grayscale-0 transition-all duration-700 ease-in-out rounded-sm"
+                  className="w-full h-auto object-cover grayscale group-hover:grayscale-0 transition-all duration-500 ease-in-out rounded-sm"
                 />
                 <div className="mt-4 text-center">
                   <span className="text-[10px] font-bold uppercase tracking-widest text-ink-sepia/70">
