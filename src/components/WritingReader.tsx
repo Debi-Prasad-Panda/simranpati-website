@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 
 type WritingReaderProps = {
@@ -22,24 +22,32 @@ export default function WritingReader({
 }: WritingReaderProps) {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
+  // Sync state with HTML document element's classList
+  const handleToggle = () => {
+    const nextMode = !isDarkMode;
+    setIsDarkMode(nextMode);
+    if (nextMode) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  };
+
+  // Revert back to light mode when the user leaves the article page
+  useEffect(() => {
+    return () => {
+      document.documentElement.classList.remove("dark");
+    };
+  }, []);
+
   return (
-    <div
-      className={`w-full transition-colors duration-500 py-12 px-6 md:px-0 rounded ${
-        isDarkMode
-          ? "bg-ink-sepia text-paper-foundation selection:bg-accent-doodle selection:text-ink-sepia"
-          : "bg-paper-foundation text-ink-sepia selection:bg-container-warm"
-      }`}
-    >
+    <div className="w-full py-12 px-6 md:px-0 rounded bg-transparent text-ink-sepia selection:bg-container-warm selection:text-ink-sepia">
       <div className="mx-auto max-w-[65ch]">
         {/* Localized Dark Mode Toggle */}
         <div className="mb-8 flex justify-end">
           <button
-            onClick={() => setIsDarkMode(!isDarkMode)}
-            className={`flex items-center gap-2 rounded-full border px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] transition-all duration-300 ${
-              isDarkMode
-                ? "border-paper-foundation/30 text-paper-foundation hover:bg-paper-foundation hover:text-ink-sepia"
-                : "border-ink-sepia/20 text-ink-sepia hover:bg-ink-sepia hover:text-paper-foundation"
-            }`}
+            onClick={handleToggle}
+            className="flex items-center gap-2 rounded-full border border-ink-sepia/20 text-ink-sepia hover:bg-ink-sepia hover:text-paper-foundation px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] transition-all duration-300 cursor-pointer"
           >
             {isDarkMode ? (
               <>
@@ -70,13 +78,7 @@ export default function WritingReader({
         {/* Article Content */}
         <header className="text-center md:text-left">
           <div className="mb-6 flex flex-wrap items-center justify-center gap-4 text-xs font-semibold uppercase tracking-[0.25em] md:justify-start">
-            <span
-              className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full border transition-colors duration-500 ${
-                isDarkMode
-                  ? "bg-paper-foundation/10 border-paper-foundation/20 text-paper-foundation"
-                  : "bg-container-warm border-outline-variant/30 text-on-surface-variant"
-              }`}
-            >
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border bg-container-warm border-outline-variant/30 text-on-surface-variant">
               <svg
                 className="h-3.5 w-3.5 fill-current"
                 viewBox="0 0 24 24"
@@ -86,22 +88,14 @@ export default function WritingReader({
               </svg>
               {readingTime} min read
             </span>
-            <span className={isDarkMode ? "text-paper-foundation/60" : "text-on-surface-variant"}>
+            <span className="text-on-surface-variant">
               {publishedAt}
             </span>
           </div>
-          <h1
-            className={`font-display text-4xl md:text-5xl font-bold leading-tight transition-colors duration-500 ${
-              isDarkMode ? "text-paper-foundation" : "text-ink-sepia"
-            }`}
-          >
+          <h1 className="font-display text-4xl md:text-5xl font-bold leading-tight text-ink-sepia">
             {title}
           </h1>
-          <p
-            className={`mt-4 text-lg italic transition-colors duration-500 ${
-              isDarkMode ? "text-paper-foundation/75" : "text-on-surface-variant"
-            }`}
-          >
+          <p className="mt-4 text-lg italic text-on-surface-variant">
             {excerpt}
           </p>
         </header>
@@ -117,11 +111,7 @@ export default function WritingReader({
         </figure>
 
         <div
-          className={`rich-text prose lg:prose-xl max-w-none transition-colors duration-500 ${
-            isDarkMode
-              ? "prose-invert text-paper-foundation/90 prose-headings:text-paper-foundation prose-strong:text-paper-foundation prose-blockquote:border-accent-doodle prose-blockquote:text-paper-foundation/80"
-              : "prose-stone text-ink-sepia prose-headings:text-ink-sepia prose-strong:text-ink-sepia prose-blockquote:border-accent-doodle"
-          }`}
+          className="rich-text prose lg:prose-xl max-w-none text-ink-sepia"
           dangerouslySetInnerHTML={{ __html: htmlContent }}
         />
       </div>

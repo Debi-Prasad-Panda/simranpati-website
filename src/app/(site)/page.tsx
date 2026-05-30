@@ -71,9 +71,9 @@ export default async function HomePage() {
               <Image
                 alt="Editorial workspace"
                 height={560}
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5-cZZnkQq8TXQ8I_6N8VD3QHcApnbN3_Ts5LQQ1dr2kH4Ll6h-5RqzmIfwB0f_CmPfrx5e86rsQ1K-6wkCLBB2R_OH67Q4O2xExf98Td6Kvc2k4Rf4tflZg_2LJYdbS_vMlVapbl3AQlM8iJ9y5G0nLtp51iDOz7TjVcZrGxRjPZ2kBy57hQzF4dM33l4Q7_tgT3_g1Vz4pdLGjlQ4PZW8noZGRqbrtMSj1yd-4IUX-2ZbXCZQm3Z4nRMSVTcI2U9rHqN"
+                src="https://images.unsplash.com/photo-1455390582262-044cdead277a?q=80&w=800"
                 width={520}
-                className="rounded-sm"
+                className="rounded-sm w-full h-auto object-cover"
               />
               <div className="absolute -bottom-4 left-6 bg-paper-foundation px-4 py-1 text-lg font-display italic text-accent-doodle border border-outline-variant/40 shadow-sm">
                 Simran

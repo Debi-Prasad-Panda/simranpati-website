@@ -18,10 +18,36 @@
   color-scheme: light;
 }
 
+/* Global Ink Mode Styles */
+html.dark {
+  --color-paper-foundation: #2d241e;
+  --color-ink-sepia: #ffeddb;
+  --color-container-warm: #3d3128;
+  --color-container-deep: #4e3f34;
+  --color-accent-doodle: #bf9270;
+  --color-surface: #251c17;
+  --color-surface-variant: #352921;
+  --color-outline-variant: #45372c;
+  --color-on-surface-variant: #b8ab9f;
+  --color-primary: #ffeddb;
+  color-scheme: dark;
+}
+
 body {
   background: var(--color-paper-foundation);
   color: var(--color-ink-sepia);
   font-family: var(--font-body);
+  transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1), color 0.5s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Apply smooth transitions to theme-relevant layout blocks */
+header, footer, main, nav, a, button, svg {
+  transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.5s cubic-bezier(0.4, 0, 0.2, 1), color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dots-grid {
+  background-image: radial-gradient(var(--color-outline-variant) 1.5px, transparent 1.5px);
+  background-size: 40px 40px;
 }
 
 .font-display {
@@ -54,6 +80,7 @@ body {
 .rich-text h3 {
   font-family: var(--font-display);
   margin-top: 2rem;
+  color: var(--color-ink-sepia);
 }
 
 .doodle-bg {

@@ -22,7 +22,7 @@ export default async function AboutPage() {
                 <Image
                   alt="Portrait of Simran"
                   height={520}
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCn9JgpV2tr0aRR6Au7qTTxPJc3yazJZr_Y7d0lAaZSzmvrvvQT86a25iyJfEZLLnGAbNe_dtEtskigQjsPx9ezppg53vgO2CQTpGW9EGPXB-0OQ4swOeVpqpilBiOpCLlDOgzqWO6zKxHzFGT92JjwQLVAJX1LDnKK9IjzA7nWZJEk5q1e3CSYRdYvfTE3GWoMCiEcJfM5-WLocLVXgoXkpMW2vEdfFeDs2tlcuK6kaBo9vgJu5x_KUtEXUGiArqQA3iDTlofOQYc"
+                  src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=800"
                   width={480}
                   className="w-full h-auto object-cover grayscale group-hover:grayscale-0 transition-all duration-500 ease-in-out rounded-sm"
                 />

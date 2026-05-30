@@ -58,7 +58,7 @@ A crowded layout induces cognitive claustrophobia. By consciously employing gene
 
 In my practice, I treat white space not as an absence of content, but as a deliberate structural element. It is the mortar that holds the bricks of our typography together. Without it, the wall collapses into an unreadable mess of noise.`,
     coverImageUrl:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuD1dEr9s1CHZNCHIo6wA_bnmC1AhEofzLLtNzwWJXBw7Zbt9RO_B_tG8azp_4FQlYXBYc-t733xMg3JrM8pXfW-1R7KPtUEYihszLs_4A-eFE4XkqF3an8O27v35b4nKMZZsB2SuakgT2CnbVNg0RFb1j0VptHh52ZBHa-qI_kcR_anucZjOnzpJK-vjVy_KcJWlrSnWomlM-SJWOaeePzJ91T4HSD5_OamMtWhB9647WYQ3z85HtdVfT3IsaKs-l_NQRU_AZW65qE",
+      "https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=600",
     readingTime: 8,
     publishedAt: "2024-10-24",
   },
@@ -74,7 +74,7 @@ In our rush to optimize, digitize, and flatten everything, we lost the sensory a
 
 Now, we crave tactile boundaries. Subtle gradients, textured cards, and hand-drawn doodles are making a comeback. Not because we want to mimic physical leather or metal literalism, but because we seek interface humanity. We need visual cues that feel alive, responsive, and crafted by human hands.`,
     coverImageUrl:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuAkppePsPkaCNjWWLUw90kH9XQN_aSX6tO5PajE03__dx0-usbScnPbUQTCqVbEh6nqn3w51BmiLzjXoih5Kz69rbPToknMcAdCtRsiGQ22jEYbhaQbtKZ4_Hm2_EOAAvdotIf9HIKzFFzLk9G7uyluwAedUjxIH3FVrm-nxkkkHkGHyoRwX82ET9PuW9A99FkZFFDhT5eTRmitfAJS5wBWvu2mBSn1HIQbNzwChzc1XNX2AOEQzS_QdfW8lcahbaJJAYYqQCzma28",
+      "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=600",
     readingTime: 5,
     publishedAt: "2024-08-15",
   },
@@ -90,7 +90,7 @@ Every legacy codebase is a library of human decisions, compromises, and constrai
 
 There is beauty in these forgotten functions. They represent moments of problem-solving under pressure, clever workarounds, and elegant architectures that held up for years. By respecting these ghosts in the machine, we build better bridges to the future.`,
     coverImageUrl:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDOoIUKi1MMNIjFsH6AC1rIHeMXaqy-bG036JT1ls9oU-_qbeM1XEaWyE01KKef8R-ZaYIOugFPtySewN1Cc0GEtGVEDFvw4YNv-fXorWli8MVEc3ArjFkJl7qVBgo_vRUsA5IheDm-nfX7VUJxDlyXKa-oipdkNKGovFf0wfqM6PX9oC1LeSksFMCbgvJ5YGa96478POqVLmykowSZ43fpphzyKt30OsdrnnCskXcQTJ96m9TN_pUIRfgX6p0B_u--bsW_V27AXTk",
+      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=600",
     readingTime: 12,
     publishedAt: "2024-06-10",
   },
@@ -106,7 +106,7 @@ Before a word is read, its shape is perceived. The serif, the tracking, the weig
 
 In design, typography is our voice. We sculpt the silent spaces around our letters, choosing tracking tolerances and scale to orchestrate a sense of premium craft and intentional reading.`,
     coverImageUrl:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuD8RJScz_yAY__3NqRIM567Rrz3jTtIv8-mrTWRHP5cuuj-ow4J0FMsBzEAmzDyPSEszBmIqOSqEgKU2WGvxlI4OXAcr5V9EWMLdPrgiSN8eqYIM7a790O_GmmZPuDru-qBczpmV3pzlU2IXRR9TZCpQo5gtw0DuU-NYDFZCY8pGMtuvJrEtNE5oye0rgI6ERQQr5ebgf9X47H7r_NC7xDveyeJTF0GlLjsqC05BxDHlLmNJzglzsjfrPiAR_N1k9zkXvN4AnK9HRc",
+      "https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?q=80&w=600",
     readingTime: 6,
     publishedAt: "2024-04-05",
   },
@@ -126,7 +126,7 @@ When we translate this to digital experiences, the concept of 'paper' becomes me
 
 In my practice, I treat white space—or in our case, the warm, organic texture of #FFEDDB—not as an absence of content, but as a deliberate structural element. It is the mortar that holds the bricks of our typography together. Without it, the wall collapses into an unreadable mess of noise.`,
     coverImageUrl:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBw_3IADf_wg8-Hcs1IOLFC6ph_UZ418nrkdnwM3hpZcw_oe1hy_-y6IUiSMxr8RacW8LArKrtlcV5Xfg82ivndjOO68I7ovHj0rzuCh0pSDNpmhw72EHWXRMh6GHPAcDtQK_WWh8DHSEcmt-mcTl8drBP7F4ZG7vVAZhmIdZbj6rZYVoCV3Kzcg3nqgrIridAZbHWjbDiYjXXvWfYqQI0oQH2MumoFsLIzPZHhDv1YDiQTU91FUlU1xKWFdfb8BYBlsS8O2_pBFKg",
+      "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?q=80&w=600",
     readingTime: 4,
     publishedAt: "2023-10-24",
   },
@@ -143,9 +143,9 @@ const fallbackDesign: DesignProject[] = [
     tools: ["Figma", "InDesign", "Procreate"],
     year: "2023",
     coverImageUrl:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuAIBH5fb-zA_pGfXr3hRrkUf9S6sARSQCpeA7AEwp3X0zBI6_UsAYbulDSwM0yx6Z8RjaGNrhmAOuigl4k2JN0o3J4sbAfp9CCAAFaEOu_YbwEzf1i1b-cCdsMj_gW3NCAhXuvfyHy3xOAFcE33EHJuu-tAIgTGPGEk_52DIeeUfIYSWS7zuKXfl2P28M2Jg1ysIfqVNnA9WgWmzQDTYR8OWSoaJ6Zzn0EYrtKnggXpWIOfDqZ6-uMD4SnDrUPklmrykwOkC2ey39M",
+      "https://images.unsplash.com/photo-1518156677180-95a2893f3e9f?q=80&w=600",
     galleryImages: [
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBBd5zY8x4ujF0thl4w_FaSmClWLvQk4TzlIZ8_39M7BXHdRulZxT6uPA2JYIuB8W_eC0gfLUHyS8OCu4tdkl_Rc6eC2dw0QuAUwPFqj5QLhy0kKYnqqSvov4L8bDI8HjywWwwbYNDdGa4e9CP3xru2WKUP1S2ZUmNyv13cTVW-r4JzXKewsqFSN6a9QoRUQ4dc7WMtvFRTo1dMaYeOFzamu4kjoIBwSseNvlxyfPIGUTWjL0Wc7zjQ4u5vZq26w01mHtzhs87ONu4",
+      "https://images.unsplash.com/photo-1518156677180-95a2893f3e9f?q=80&w=600",
     ],
   },
   {
@@ -158,7 +158,7 @@ const fallbackDesign: DesignProject[] = [
     tools: ["InDesign", "Illustrator"],
     year: "2024",
     coverImageUrl:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuD1dEr9s1CHZNCHIo6wA_bnmC1AhEofzLLtNzwWJXBw7Zbt9RO_B_tG8azp_4FQlYXBYc-t733xMg3JrM8pXfW-1R7KPtUEYihszLs_4A-eFE4XkqF3an8O27v35b4nKMZZsB2SuakgT2CnbVNg0RFb1j0VptHh52ZBHa-qI_kcR_anucZjOnzpJK-vjVy_KcJWlrSnWomlM-SJWOaeePzJ91T4HSD5_OamMtWhB9647WYQ3z85HtdVfT3IsaKs-l_NQRU_AZW65qE",
+      "https://images.unsplash.com/photo-1448375240586-882707db888b?q=80&w=600",
     galleryImages: [],
   },
   {
@@ -171,7 +171,7 @@ const fallbackDesign: DesignProject[] = [
     tools: ["Illustrator", "Photoshop"],
     year: "2024",
     coverImageUrl:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDOoIUKi1MMNIjFsH6AC1rIHeMXaqy-bG036JT1ls9oU-_qbeM1XEaWyE01KKef8R-ZaYIOugFPtySewN1Cc0GEtGVEDFvw4YNv-fXorWli8MVEc3ArjFkJl7qVBgo_vRUsA5IheDm-nfX7VUJxDlyXKa-oipdkNKGovFf0wfqM6PX9oC1LeSksFMCbgvJ5YGa96478POqVLmykowSZ43fpphzyKt30OsdrnnCskXcQTJ96m9TN_pUIRfgX6p0B_u--bsW_V27AXTk",
+      "https://images.unsplash.com/photo-1497515114629-f71d768fd07c?q=80&w=600",
     galleryImages: [],
   },
   {
@@ -184,7 +184,7 @@ const fallbackDesign: DesignProject[] = [
     tools: ["Figma", "React"],
     year: "2023",
     coverImageUrl:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuAkppePsPkaCNjWWLUw90kH9XQN_aSX6tO5PajE03__dx0-usbScnPbUQTCqVbEh6nqn3w51BmiLzjXoih5Kz69rbPToknMcAdCtRsiGQ22jEYbhaQbtKZ4_Hm2_EOAAvdotIf9HIKzFFzLk9G7uyluwAedUjxIH3FVrm-nxkkkHkGHyoRwX82ET9PuW9A99FkZFFDhT5eTRmitfAJS5wBWvu2mBSn1HIQbNzwChzc1XNX2AOEQzS_QdfW8lcahbaJJAYYqQCzma28",
+      "https://images.unsplash.com/photo-1441986300917-64674bd600d8?q=80&w=600",
     galleryImages: [],
   },
   {
@@ -197,7 +197,7 @@ const fallbackDesign: DesignProject[] = [
     tools: ["Illustrator", "InDesign"],
     year: "2023",
     coverImageUrl:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuD8RJScz_yAY__3NqRIM567Rrz3jTtIv8-mrTWRHP5cuuj-ow4J0FMsBzEAmzDyPSEszBmIqOSqEgKU2WGvxlI4OXAcr5V9EWMLdPrgiSN8eqYIM7a790O_GmmZPuDru-qBczpmV3pzlU2IXRR9TZCpQo5gtw0DuU-NYDFZCY8pGMtuvJrEtNE5oye0rgI6ERQQr5ebgf9X47H7r_NC7xDveyeJTF0GlLjsqC05BxDHlLmNJzglzsjfrPiAR_N1k9zkXvN4AnK9HRc",
+      "https://images.unsplash.com/photo-1507208773393-401966772d2b?q=80&w=600",
     galleryImages: [],
   },
   {
@@ -210,7 +210,7 @@ const fallbackDesign: DesignProject[] = [
     tools: ["InDesign", "Photoshop"],
     year: "2024",
     coverImageUrl:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuCqZAzzwtUsJTmvUWkG01faXfopN6J3BpdCiwNnUPNJhifmNIeF9ZCwpzQfl04NWvym5nDpmqFy-OWOBCzsW0lBkJkIjI8ESD0IxKUac8ZFP1X3QN0GtaRAkD4PKZWXpXrqDPQ9jwd6P4Xg8YAVd1iFVl-P2SZ5C5Qe1IrKFecMkoytf7K0v3ZD5yWxvCpc6VOLsK02kKPwPXHzE0VP4heQuGQTnLAhUCV5LE0A_PKSa6III7v4otNUgMTJoMP4zV-GHwbq1VwMX40",
+      "https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?q=80&w=600",
     galleryImages: [],
   },
 ];
