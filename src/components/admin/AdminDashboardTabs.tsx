@@ -5,6 +5,7 @@ import SiteSettingsForm from "./SiteSettingsForm";
 import AdminInventory from "./AdminInventory";
 import WritingPostForm from "./WritingPostForm";
 import DesignProjectForm from "./DesignProjectForm";
+import ChangePasswordForm from "./ChangePasswordForm";
 import { SiteSettings } from "@/lib/content";
 
 type AdminDashboardTabsProps = {
@@ -107,7 +108,19 @@ export default function AdminDashboardTabs({ settings }: AdminDashboardTabsProps
           </div>
 
           <div className="animate-[fadeIn_0.3s_ease-out]">
-            {activeTab === "settings" && <SiteSettingsForm initial={settings} />}
+            {activeTab === "settings" && (
+              <div className="space-y-10">
+                <SiteSettingsForm initial={settings} />
+                <hr className="border-outline-variant/30" />
+                <section className="bg-surface/30 p-5 rounded border border-outline-variant/20">
+                  <h3 className="font-display text-lg text-ink-sepia mb-1">Change Security Password</h3>
+                  <p className="text-xs text-on-surface-variant mb-4">
+                    Update your admin login password. Your new password will be hashed using bcrypt before saving.
+                  </p>
+                  <ChangePasswordForm />
+                </section>
+              </div>
+            )}
             {activeTab === "inventory" && <AdminInventory />}
             {activeTab === "writing" && <WritingPostForm />}
             {activeTab === "design" && <DesignProjectForm />}
