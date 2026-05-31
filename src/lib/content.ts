@@ -216,12 +216,12 @@ const fallbackDesign: DesignProject[] = [
 ];
 
 const fallbackSettings: SiteSettings = {
-  heroTitle: "Crafting clarity through ink and pixels.",
+  heroTitle: "Turning complex ideas into engaging narratives.",
   heroTagline:
-    "A curious blend of strategic editorial writing and structural design thinking. I build interfaces that read well and write copy that looks beautiful.",
+    "A postgraduate English literature student with a focus on digital storytelling, copywriting, and content writing. I explore the space where words, culture, and digital media connect.",
   aboutText:
-    "Hello. I'm Simran, a multidisciplinary designer and writer who finds harmony in the intersection of structured grids and organic storytelling. My practice is rooted in the belief that every pixel should serve a purpose, and every word should earn its place on the page.\n\nWith a background spanning editorial illustration to complex UX architecture, I approach projects with a \"quirky editorial\" mindset—seeking to inject moments of artisanal delight into functional, high-performing interfaces.",
-  contactEmail: "simranpati28@gmail.com",
+    "Hello. I'm Simran, a postgraduate English student and writer who finds harmony in the intersection of literature, storytelling, and digital media. I enjoy turning abstract concepts into engaging, accessible, and structured copy. My goal is to use digital platforms to make art, culture, and personal reflections more relatable and meaningful for everyone.\n\nWith experience spanning editorial blogging, content creation for NGOs, and teaching communication skills, I bring a thoughtful and adaptable approach to crafting digital narratives.",
+  contactEmail: "simranpati01@gmail.com",
 };
 
 export async function getSiteSettings() {
