@@ -36,11 +36,24 @@ export type DbDesignProject = {
   galleryImages: string[] | string | null;
 };
 
+export type TimelineItem = {
+  id: string;
+  type: "work" | "education";
+  period: string;
+  title: string;
+  organization: string;
+  description: string;
+};
+
 export type SiteSettings = {
   heroTitle: string;
   heroTagline: string;
   aboutText: string;
   contactEmail: string;
+  aboutPhotoUrl?: string | null;
+  resumeUrl?: string | null;
+  linkedinUrl?: string | null;
+  timelineData?: TimelineItem[] | null;
 };
 
 const fallbackWriting: WritingPost[] = [
@@ -222,6 +235,59 @@ const fallbackSettings: SiteSettings = {
   aboutText:
     "Hello. I'm Simran, a postgraduate English student and writer who finds harmony in the intersection of literature, storytelling, and digital media. I enjoy turning abstract concepts into engaging, accessible, and structured copy. My goal is to use digital platforms to make art, culture, and personal reflections more relatable and meaningful for everyone.\n\nWith experience spanning editorial blogging, content creation for NGOs, and teaching communication skills, I bring a thoughtful and adaptable approach to crafting digital narratives.",
   contactEmail: "simranpati01@gmail.com",
+  aboutPhotoUrl: "/simran.jpg",
+  resumeUrl: "/resume.pdf",
+  linkedinUrl: "https://www.linkedin.com/in/simran-pati-9b02aa247",
+  timelineData: [
+    {
+      id: "w1",
+      type: "work",
+      period: "Feb 2025 — Mar 2025",
+      title: "Intern - Content Writer",
+      organization: "InAmigos",
+      description: "Created audience-focused digital content to communicate the NGO's mission across platforms. Translated social initiatives into engaging narratives to increase relatability and outreach."
+    },
+    {
+      id: "w2",
+      type: "work",
+      period: "2023 — 2024",
+      title: "Communication & English Instructor",
+      organization: "Tanusri's Art and Craft Academy",
+      description: "Designed and conducted interactive online sessions to improve students' communication skills. Used storytelling, visual aids, and performance-based techniques to enhance engagement."
+    },
+    {
+      id: "w3",
+      type: "work",
+      period: "Apr 2023 — Jun 2023",
+      title: "Intern - Web Content Writer",
+      organization: "Webify Hub",
+      description: "Produced blog content across diverse topics using AI-assisted research and prompt engineering. Edited and refined content for clarity, coherence, and reader engagement."
+    },
+    {
+      id: "e1",
+      type: "education",
+      period: "2025 — Present",
+      title: "MA in English Literature",
+      organization: "St. Xavier's University, Kolkata",
+      description: "Pursuing post-graduate studies with a focus on narrative structures, language history, and modern literary critiques."
+    },
+    {
+      id: "e2",
+      type: "education",
+      period: "2021 — 2024",
+      title: "BA in English Literature (Honours)",
+      organization: "Calcutta University",
+      description: "Graduated with honours. Ranked among the top scorers of the undergraduate batch at the University of Calcutta."
+    },
+    {
+      id: "e3",
+      type: "education",
+      period: "Graduated 2021",
+      title: "Class XII (ISC)",
+      organization: "Auxilium Convent School",
+      description: "Graduated with a score of 90.5%. Member of the school Reporting Club (2022-2024) and Event Planner (2016-2020)."
+    }
+  ]
 };
 
 export async function getSiteSettings() {
@@ -230,22 +296,47 @@ export async function getSiteSettings() {
   }
 
   try {
-    const { rows } = await sql<SiteSettings>`
-      SELECT hero_title AS "heroTitle", hero_tagline AS "heroTagline", about_text AS "aboutText", contact_email AS "contactEmail"
+    // Run an automatic migration check
+    await sql`ALTER TABLE site_settings ADD COLUMN IF NOT EXISTS about_photo_url TEXT`;
+    await sql`ALTER TABLE site_settings ADD COLUMN IF NOT EXISTS resume_url TEXT`;
+    await sql`ALTER TABLE site_settings ADD COLUMN IF NOT EXISTS linkedin_url TEXT`;
+    await sql`ALTER TABLE site_settings ADD COLUMN IF NOT EXISTS timeline_data JSONB`;
+
+    const { rows } = await sql<any>`
+      SELECT 
+        hero_title AS "heroTitle", 
+        hero_tagline AS "heroTagline", 
+        about_text AS "aboutText", 
+        contact_email AS "contactEmail",
+        about_photo_url AS "aboutPhotoUrl",
+        resume_url AS "resumeUrl",
+        linkedin_url AS "linkedinUrl",
+        timeline_data AS "timelineData"
       FROM site_settings
       WHERE id = 1
       LIMIT 1
     `;
 
     if (rows.length === 0) {
+      const timelineJson = JSON.stringify(fallbackSettings.timelineData);
       await sql`
-        INSERT INTO site_settings (id, hero_title, hero_tagline, about_text, contact_email)
-        VALUES (1, ${fallbackSettings.heroTitle}, ${fallbackSettings.heroTagline}, ${fallbackSettings.aboutText}, ${fallbackSettings.contactEmail})
+        INSERT INTO site_settings (id, hero_title, hero_tagline, about_text, contact_email, about_photo_url, resume_url, linkedin_url, timeline_data)
+        VALUES (1, ${fallbackSettings.heroTitle}, ${fallbackSettings.heroTagline}, ${fallbackSettings.aboutText}, ${fallbackSettings.contactEmail}, ${fallbackSettings.aboutPhotoUrl}, ${fallbackSettings.resumeUrl}, ${fallbackSettings.linkedinUrl}, ${timelineJson})
       `;
       return fallbackSettings;
     }
 
-    return rows[0] ?? fallbackSettings;
+    const settings = rows[0];
+    return {
+      heroTitle: settings.heroTitle,
+      heroTagline: settings.heroTagline,
+      aboutText: settings.aboutText,
+      contactEmail: settings.contactEmail,
+      aboutPhotoUrl: settings.aboutPhotoUrl ?? fallbackSettings.aboutPhotoUrl,
+      resumeUrl: settings.resumeUrl ?? fallbackSettings.resumeUrl,
+      linkedinUrl: settings.linkedinUrl ?? fallbackSettings.linkedinUrl,
+      timelineData: Array.isArray(settings.timelineData) ? settings.timelineData : fallbackSettings.timelineData,
+    } as SiteSettings;
   } catch (error) {
     console.error("Failed to load site settings", error);
     return fallbackSettings;

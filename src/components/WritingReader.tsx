@@ -22,23 +22,32 @@ export default function WritingReader({
 }: WritingReaderProps) {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
-  // Sync state with HTML document element's classList
+  useEffect(() => {
+    const checkTheme = () => {
+      setIsDarkMode(document.documentElement.classList.contains("dark"));
+    };
+    checkTheme();
+
+    const observer = new MutationObserver(checkTheme);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"],
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   const handleToggle = () => {
     const nextMode = !isDarkMode;
     setIsDarkMode(nextMode);
     if (nextMode) {
       document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
     } else {
       document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
     }
   };
-
-  // Revert back to light mode when the user leaves the article page
-  useEffect(() => {
-    return () => {
-      document.documentElement.classList.remove("dark");
-    };
-  }, []);
 
   return (
     <div className="w-full py-12 px-6 md:px-0 rounded bg-transparent text-ink-sepia selection:bg-container-warm selection:text-ink-sepia">

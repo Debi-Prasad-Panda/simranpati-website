@@ -9,6 +9,10 @@ export const metadata = buildMetadata({
 
 export default async function AboutPage() {
   const settings = await getSiteSettings();
+  
+  const timeline = settings.timelineData || [];
+  const workEntries = timeline.filter((item) => item.type === "work");
+  const educationEntries = timeline.filter((item) => item.type === "education");
 
   return (
     <div className="relative pt-6">
@@ -22,7 +26,7 @@ export default async function AboutPage() {
                 <Image
                   alt="Portrait of Simran"
                   height={520}
-                  src="/simran.jpg"
+                  src={settings.aboutPhotoUrl || "/simran.jpg"}
                   width={480}
                   className="w-full h-auto object-cover grayscale group-hover:grayscale-0 transition-all duration-500 ease-in-out rounded-sm"
                 />
@@ -52,9 +56,6 @@ export default async function AboutPage() {
               <div className="mt-6 text-lg text-on-surface-variant space-y-4">
                 <p>
                   {settings.aboutText || "Hello. I'm Simran, a postgraduate English student and writer who finds harmony in the intersection of literature, storytelling, and digital media. I enjoy turning abstract concepts into engaging, accessible, and structured copy. My goal is to use digital platforms to make art, culture, and personal reflections more relatable and meaningful for everyone."}
-                </p>
-                <p>
-                  With experience spanning editorial blogging, content creation for NGOs, and teaching communication skills, I bring a thoughtful and adaptable approach to crafting digital narratives.
                 </p>
               </div>
             </div>
@@ -209,7 +210,7 @@ export default async function AboutPage() {
             {/* Resume and Socials CTA in the left sidebar on desktop */}
             <div className="mt-8 hidden lg:flex flex-col gap-4">
               <a
-                href="/resume.pdf"
+                href={settings.resumeUrl || "/resume.pdf"}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 px-6 py-3 border border-ink-sepia text-ink-sepia hover:bg-ink-sepia hover:text-paper-foundation transition-all duration-300 rounded font-medium text-sm w-fit"
@@ -221,12 +222,12 @@ export default async function AboutPage() {
               </a>
               
               <div className="flex items-center gap-4 mt-2">
-                <a href="https://www.linkedin.com/in/simran-pati-9b02aa247" target="_blank" rel="noopener noreferrer" className="text-on-surface-variant hover:text-accent-doodle transition-colors" title="LinkedIn">
+                <a href={settings.linkedinUrl || "https://www.linkedin.com/in/simran-pati-9b02aa247"} target="_blank" rel="noopener noreferrer" className="text-on-surface-variant hover:text-accent-doodle transition-colors" title="LinkedIn">
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
                   </svg>
                 </a>
-                <a href="mailto:simranpati01@gmail.com" className="text-on-surface-variant hover:text-accent-doodle transition-colors" title="Email Contact">
+                <a href={`mailto:${settings.contactEmail || "simranpati01@gmail.com"}`} className="text-on-surface-variant hover:text-accent-doodle transition-colors" title="Email Contact">
                   <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                   </svg>
@@ -245,36 +246,20 @@ export default async function AboutPage() {
                 Work Experience
               </h3>
               <div className="relative border-l border-outline-variant/40 pl-6 space-y-10">
-                {/* Entry 1 */}
-                <div className="relative group">
-                  <div className="absolute -left-[31px] top-1.5 w-3 h-3 rounded-full bg-outline-variant border-4 border-paper-foundation group-hover:bg-accent-doodle group-hover:scale-125 transition-all duration-300"></div>
-                  <span className="text-xs font-mono text-accent-doodle">Feb 2025 — Mar 2025</span>
-                  <h4 className="font-display text-lg text-primary mt-1">Intern - Content Writer</h4>
-                  <p className="text-xs text-on-surface-variant font-medium">InAmigos</p>
-                  <p className="mt-2 text-sm text-on-surface-variant leading-relaxed">
-                    Created audience-focused digital content to communicate the NGO&apos;s mission across platforms. Translated social initiatives into engaging narratives to increase relatability and outreach.
-                  </p>
-                </div>
-                {/* Entry 2 */}
-                <div className="relative group">
-                  <div className="absolute -left-[31px] top-1.5 w-3 h-3 rounded-full bg-outline-variant border-4 border-paper-foundation group-hover:bg-accent-doodle group-hover:scale-125 transition-all duration-300"></div>
-                  <span className="text-xs font-mono text-on-surface-variant">2023 — 2024</span>
-                  <h4 className="font-display text-lg text-primary mt-1">Communication &amp; English Instructor</h4>
-                  <p className="text-xs text-on-surface-variant font-medium">Tanusri&apos;s Art and Craft Academy</p>
-                  <p className="mt-2 text-sm text-on-surface-variant leading-relaxed">
-                    Designed and conducted interactive online sessions to improve students&apos; communication skills. Used storytelling, visual aids, and performance-based techniques to enhance engagement.
-                  </p>
-                </div>
-                {/* Entry 3 */}
-                <div className="relative group">
-                  <div className="absolute -left-[31px] top-1.5 w-3 h-3 rounded-full bg-outline-variant border-4 border-paper-foundation group-hover:bg-accent-doodle group-hover:scale-125 transition-all duration-300"></div>
-                  <span className="text-xs font-mono text-on-surface-variant">Apr 2023 — Jun 2023</span>
-                  <h4 className="font-display text-lg text-primary mt-1">Intern - Web Content Writer</h4>
-                  <p className="text-xs text-on-surface-variant font-medium">Webify Hub</p>
-                  <p className="mt-2 text-sm text-on-surface-variant leading-relaxed">
-                    Produced blog content across diverse topics using AI-assisted research and prompt engineering. Edited and refined content for clarity, coherence, and reader engagement.
-                  </p>
-                </div>
+                {workEntries.map((item) => (
+                  <div key={item.id} className="relative group">
+                    <div className="absolute -left-[31px] top-1.5 w-3 h-3 rounded-full bg-outline-variant border-4 border-paper-foundation group-hover:bg-accent-doodle group-hover:scale-125 transition-all duration-300"></div>
+                    <span className="text-xs font-mono text-accent-doodle">{item.period}</span>
+                    <h4 className="font-display text-lg text-primary mt-1">{item.title}</h4>
+                    <p className="text-xs text-on-surface-variant font-medium">{item.organization}</p>
+                    <p className="mt-2 text-sm text-on-surface-variant leading-relaxed">
+                      {item.description}
+                    </p>
+                  </div>
+                ))}
+                {workEntries.length === 0 && (
+                  <p className="text-sm text-on-surface-variant italic">No experience entries listed.</p>
+                )}
               </div>
             </div>
 
@@ -288,65 +273,49 @@ export default async function AboutPage() {
                 Education
               </h3>
               <div className="relative border-l border-outline-variant/40 pl-6 space-y-10">
-                {/* Education Entry 1 */}
-                <div className="relative group">
-                  <div className="absolute -left-[31px] top-1.5 w-3 h-3 rounded-full bg-outline-variant border-4 border-paper-foundation group-hover:bg-accent-doodle group-hover:scale-125 transition-all duration-300"></div>
-                  <span className="text-xs font-mono text-accent-doodle">2025 — Present</span>
-                  <h4 className="font-display text-lg text-primary mt-1">MA in English Literature</h4>
-                  <p className="text-xs text-on-surface-variant font-medium">St. Xavier&apos;s University, Kolkata</p>
-                  <p className="mt-2 text-sm text-on-surface-variant leading-relaxed">
-                    Pursuing post-graduate studies with a focus on narrative structures, language history, and modern literary critiques.
-                  </p>
-                </div>
-                {/* Education Entry 2 */}
-                <div className="relative group">
-                  <div className="absolute -left-[31px] top-1.5 w-3 h-3 rounded-full bg-outline-variant border-4 border-paper-foundation group-hover:bg-accent-doodle group-hover:scale-125 transition-all duration-300"></div>
-                  <span className="text-xs font-mono text-on-surface-variant">2021 — 2024</span>
-                  <h4 className="font-display text-lg text-primary mt-1">BA in English Literature (Honours)</h4>
-                  <p className="text-xs text-on-surface-variant font-medium">Calcutta University</p>
-                  <p className="mt-2 text-sm text-on-surface-variant leading-relaxed">
-                    Graduated with honours. Ranked among the top scorers of the undergraduate batch at the University of Calcutta.
-                  </p>
-                </div>
-                {/* Education Entry 3 */}
-                <div className="relative group">
-                  <div className="absolute -left-[31px] top-1.5 w-3 h-3 rounded-full bg-outline-variant border-4 border-paper-foundation group-hover:bg-accent-doodle group-hover:scale-125 transition-all duration-300"></div>
-                  <span className="text-xs font-mono text-on-surface-variant">Graduated 2021</span>
-                  <h4 className="font-display text-lg text-primary mt-1">Class XII (ISC)</h4>
-                  <p className="text-xs text-on-surface-variant font-medium">Auxilium Convent School</p>
-                  <p className="mt-2 text-sm text-on-surface-variant leading-relaxed">
-                    Graduated with a score of 90.5%. Member of the school Reporting Club (2022-2024) and Event Planner (2016-2020).
-                  </p>
-                </div>
+                {educationEntries.map((item) => (
+                  <div key={item.id} className="relative group">
+                    <div className="absolute -left-[31px] top-1.5 w-3 h-3 rounded-full bg-outline-variant border-4 border-paper-foundation group-hover:bg-accent-doodle group-hover:scale-125 transition-all duration-300"></div>
+                    <span className="text-xs font-mono text-on-surface-variant">{item.period}</span>
+                    <h4 className="font-display text-lg text-primary mt-1">{item.title}</h4>
+                    <p className="text-xs text-on-surface-variant font-medium">{item.organization}</p>
+                    <p className="mt-2 text-sm text-on-surface-variant leading-relaxed">
+                      {item.description}
+                    </p>
+                  </div>
+                ))}
+                {educationEntries.length === 0 && (
+                  <p className="text-sm text-on-surface-variant italic">No education entries listed.</p>
+                )}
               </div>
             </div>
+          </div>
+          
+          {/* Resume and Socials CTA for mobile/tablet screens */}
+          <div className="mt-12 flex flex-col sm:flex-row items-center gap-6 md:gap-10 border-t border-outline-variant/30 pt-8 w-full lg:hidden">
+            <a
+              href={settings.resumeUrl || "/resume.pdf"}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 border border-ink-sepia text-ink-sepia hover:bg-ink-sepia hover:text-paper-foundation transition-all duration-300 rounded font-medium text-sm w-full sm:w-auto"
+            >
+              <svg className="w-4 h-4 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+              </svg>
+              Download Resume (PDF)
+            </a>
             
-            {/* Resume and Socials CTA for mobile/tablet screens */}
-            <div className="mt-12 flex flex-col sm:flex-row items-center gap-6 md:gap-10 border-t border-outline-variant/30 pt-8 w-full lg:hidden">
-              <a
-                href="/resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 border border-ink-sepia text-ink-sepia hover:bg-ink-sepia hover:text-paper-foundation transition-all duration-300 rounded font-medium text-sm w-full sm:w-auto"
-              >
-                <svg className="w-4 h-4 animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            <div className="flex items-center gap-6 mt-2 sm:mt-0">
+              <a href={settings.linkedinUrl || "https://www.linkedin.com/in/simran-pati-9b02aa247"} target="_blank" rel="noopener noreferrer" className="text-on-surface-variant hover:text-accent-doodle transition-colors" title="LinkedIn">
+                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
                 </svg>
-                Download Resume (PDF)
               </a>
-              
-              <div className="flex items-center gap-6 mt-2 sm:mt-0">
-                <a href="https://www.linkedin.com/in/simran-pati-9b02aa247" target="_blank" rel="noopener noreferrer" className="text-on-surface-variant hover:text-accent-doodle transition-colors" title="LinkedIn">
-                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-                  </svg>
-                </a>
-                <a href="mailto:simranpati01@gmail.com" className="text-on-surface-variant hover:text-accent-doodle transition-colors" title="Email Contact">
-                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                  </svg>
-                </a>
-              </div>
+              <a href={`mailto:${settings.contactEmail || "simranpati01@gmail.com"}`} className="text-on-surface-variant hover:text-accent-doodle transition-colors" title="Email Contact">
+                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </a>
             </div>
           </div>
         </div>

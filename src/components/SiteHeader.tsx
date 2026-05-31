@@ -2,13 +2,32 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { siteConfig } from "@/lib/site";
+import ThemeSwitch from "./ThemeSwitch";
 
 export default function SiteHeader() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false); // Mobile menu open/close
   const [isDropdownOpen, setIsDropdownOpen] = useState(false); // Desktop dropdown
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  useEffect(() => {
+    const isDark = document.documentElement.classList.contains("dark");
+    setIsDarkMode(isDark);
+  }, []);
+
+  const handleToggle = () => {
+    const nextMode = !isDarkMode;
+    setIsDarkMode(nextMode);
+    if (nextMode) {
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
+  };
 
 
 
@@ -98,32 +117,38 @@ export default function SiteHeader() {
           </Link>
         </nav>
 
-        {/* Contact Link / Button */}
-        <Link
-          className={`hidden rounded bg-accent-doodle text-paper-foundation px-6 py-2 text-xs font-semibold uppercase tracking-[0.2em] transition-opacity hover:opacity-90 md:inline-flex ${
-            pathname === "/contact" ? "bg-surface-tint" : ""
-          }`}
-          href="/contact"
-        >
-          Contact
-        </Link>
+        {/* Desktop Actions */}
+        <div className="hidden md:flex items-center gap-4">
+          <ThemeSwitch isDarkMode={isDarkMode} onToggle={handleToggle} />
+          <Link
+            className={`rounded bg-accent-doodle text-paper-foundation px-6 py-2 text-xs font-semibold uppercase tracking-[0.2em] transition-opacity hover:opacity-90 ${
+              pathname === "/contact" ? "bg-surface-tint" : ""
+            }`}
+            href="/contact"
+          >
+            Contact
+          </Link>
+        </div>
 
-        {/* Mobile Menu Button */}
-        <button
-          className="md:hidden text-ink-sepia p-1 cursor-pointer focus:outline-none"
-          onClick={() => setIsOpen(!isOpen)}
-          aria-label="Toggle mobile menu"
-        >
-          {isOpen ? (
-            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          ) : (
-            <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          )}
-        </button>
+        {/* Mobile Controls */}
+        <div className="flex items-center gap-3 md:hidden">
+          <ThemeSwitch isDarkMode={isDarkMode} onToggle={handleToggle} />
+          <button
+            className="text-ink-sepia p-1 cursor-pointer focus:outline-none"
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label="Toggle mobile menu"
+          >
+            {isOpen ? (
+              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            ) : (
+              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            )}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Drawer Menu */}
