@@ -64,7 +64,7 @@ export default async function WritingPortfolioPage() {
 
               <div className="flex items-center justify-between border-t border-outline-variant/40 pt-6 mt-auto">
                 <div className="text-[10px] uppercase tracking-widest text-on-surface-variant">
-                  Published {post.publishedAt ? `in ${post.publishedAt.split("-")[0]}` : "recently"}
+                  Published {post.publishedAt && !isNaN(new Date(post.publishedAt).getTime()) ? `in ${new Date(post.publishedAt).getFullYear()}` : "recently"}
                 </div>
                 <svg className="h-5 w-5 text-surface-tint group-hover:translate-x-2 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M13 5l7 7-7 7M5 5l7 7-7 7" />

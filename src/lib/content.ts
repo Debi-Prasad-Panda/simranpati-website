@@ -373,10 +373,14 @@ export async function getWritingPosts() {
       }));
     }
 
-    return rows.map((row) => ({
-      ...row,
-      readingTime: estimateReadingTime(row.body),
-    }));
+    return rows.map((row) => {
+      const pubAt = row.publishedAt as unknown;
+      return {
+        ...row,
+        publishedAt: pubAt ? (pubAt instanceof Date ? pubAt.toISOString().split("T")[0] : String(pubAt)) : "",
+        readingTime: estimateReadingTime(row.body),
+      };
+    });
   } catch (error) {
     console.error("Failed to load writing posts", error);
     return fallbackWriting.map((post) => ({
@@ -403,9 +407,12 @@ export async function getWritingPostBySlug(slug: string) {
       return fallbackWriting.find((post) => post.slug === slug) ?? null;
     }
 
+    const row = rows[0];
+    const pubAt = row.publishedAt as unknown;
     return {
-      ...rows[0],
-      readingTime: estimateReadingTime(rows[0].body),
+      ...row,
+      publishedAt: pubAt ? (pubAt instanceof Date ? pubAt.toISOString().split("T")[0] : String(pubAt)) : "",
+      readingTime: estimateReadingTime(row.body),
     };
   } catch (error) {
     console.error("Failed to load writing post", error);
